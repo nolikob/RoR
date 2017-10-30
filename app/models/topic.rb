@@ -3,6 +3,7 @@
 # Table name: topics
 #
 #  id         :integer          not null, primary key
+#  title      :string
 #  subject_id :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -13,7 +14,9 @@
 #
 
 class Topic < ApplicationRecord
-  has_many :topic_assignment
-  has_many :tests, through: :topic_assignment
+  has_many :topic_assignments
+  has_many :tests, through: :topic_assignments
+  has_many :questions
+
   belongs_to :subject
 end
