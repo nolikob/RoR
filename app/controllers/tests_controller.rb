@@ -1,7 +1,7 @@
 class TestsController < ApplicationController
   before_action :set_test, only: [:show, :edit, :update, :destroy]
 
-  permits :title, :subject_id, question_ids: []
+  permits :title, :questions, :subject_id
   def index
     @tests = Test.all
   end
@@ -20,7 +20,7 @@ class TestsController < ApplicationController
     @test = Test.new(test)
 
     if @test.save
-      redirect_to @test, notice: 'Test was successfully created.'
+      redirect_to tests_path, notice: 'Test was successfully created.'
     else
       render :new
     end
@@ -28,7 +28,7 @@ class TestsController < ApplicationController
 
   def update(test)
     if @test.update(test)
-      redirect_to @test, notice: 'Test was successfully updated.'
+      redirect_to tests_path, notice: 'Test was successfully updated.'
     else
       render :edit
     end
