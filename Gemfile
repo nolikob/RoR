@@ -40,6 +40,7 @@ gem 'enumerize', '~> 2.1', '>= 2.1.2'
 gem 'simple_form', '~> 3.5'
 gem 'simple_form-magic_submit', '~> 1.2'
 gem 'action_args', '~> 2.3'
+gem 'bh', '~> 1.3', '>= 1.3.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
