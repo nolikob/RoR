@@ -3,7 +3,18 @@ class TestsController < ApplicationController
 
   permits :title, :questions, :subject_id
   def index
-    @tests = Test.all
+    @tests = Test.with_subject_title('Webové technologie')
+  end
+
+  def generate_new
+  end
+
+  def generate(template_id)
+    if Services::TestGenerator.new(template_id).generate!
+      redirect_to tests_path, notice: 'Test was successfully created'
+    else
+      redirect_to tests_path, notice: 'Test generation failed' 
+    end
   end
 
   def show
